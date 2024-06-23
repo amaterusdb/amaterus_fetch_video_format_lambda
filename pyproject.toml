@@ -15,6 +15,7 @@ py_version = "py311"
     paths = ["."]
 
 [tool.poetry]
+package-mode = false
 name = "amaterus-fetch-video-format-lambda"
 version = "0.0.0"
 description = ""
