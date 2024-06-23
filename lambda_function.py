@@ -14,7 +14,7 @@ def lambda_handler(event: dict, context: dict) -> dict:
         "extractor_args": {
             "youtube": {
                 "player-client": "web",
-                "skip": ["dash", "hls"],
+                "skip": ["dash", "hls", "translated_subs"],
             },
         },
     }
