@@ -1,4 +1,10 @@
+import logging
+from logging import getLogger
+
 from yt_dlp import YoutubeDL
+
+logger = getLogger()
+logger.setLevel(logging.INFO)
 
 
 def lambda_handler(event: dict, context: dict) -> dict:
@@ -53,15 +59,37 @@ def lambda_handler(event: dict, context: dict) -> dict:
 
         # extractor specific format id
         format_id = format.get("format_id")
+        if not isinstance(format_id, str):
+            logger.warn(f"Invliad format id. Skipping: {format_id}")
+            continue
+
         filesize = format.get("filesize")
+        if not isinstance(filesize, int):
+            filesize = None
 
         protocol = format.get("protocol")
+        if not isinstance(protocol, str):
+            protocol = None
+
         acodec = format.get("acodec")
+        if not isinstance(acodec, str):
+            acodec = None
+
         vcodec = format.get("vcodec")
+        if not isinstance(vcodec, str):
+            vcodec = None
 
         width = format.get("width")
+        if not isinstance(width, int):
+            width = None
+
         height = format.get("height")
+        if not isinstance(height, int):
+            height = None
+
         fps = format.get("fps")
+        if not isinstance(fps, float):
+            fps = None
 
         ret_formats.append(
             {
