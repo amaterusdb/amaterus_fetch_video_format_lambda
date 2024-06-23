@@ -11,6 +11,12 @@ def lambda_handler(event: dict, context: dict) -> dict:
 
     ydl_opts = {
         "cachedir": False,
+        "extractor_args": {
+            "youtube": {
+                "player-client": "web",
+                "skip": ["dash", "hls"],
+            },
+        },
     }
     with YoutubeDL(params=ydl_opts) as ydl:
         raw_info = ydl.extract_info(url=url, download=False)
