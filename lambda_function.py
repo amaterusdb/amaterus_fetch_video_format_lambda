@@ -60,7 +60,7 @@ def lambda_handler(event: dict, context: dict) -> dict:
         # extractor specific format id
         format_id = format.get("format_id")
         if not isinstance(format_id, str):
-            logger.warn(f"Invliad format id. Skipping: {format_id}")
+            logger.warning(f"Invliad format id. Skipping: {format_id}")
             continue
 
         filesize = format.get("filesize")
