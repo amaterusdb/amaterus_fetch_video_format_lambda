@@ -88,7 +88,7 @@ def lambda_handler(event: dict, context: dict) -> dict:
             height = None
 
         fps = format.get("fps")
-        if not isinstance(fps, float):
+        if not isinstance(fps, int) and not isinstance(fps, float):
             fps = None
 
         ret_formats.append(
