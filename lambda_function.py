@@ -9,7 +9,10 @@ def lambda_handler(event: dict, context: dict) -> dict:
             "message": "Bad Request",
         }
 
-    with YoutubeDL() as ydl:
+    ydl_opts = {
+        "cachedir": False,
+    }
+    with YoutubeDL(params=ydl_opts) as ydl:
         raw_info = ydl.extract_info(url=url, download=False)
         info = ydl.sanitize_info(raw_info)
 
